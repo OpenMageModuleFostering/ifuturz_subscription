@@ -14,8 +14,8 @@ CREATE TABLE {$this->getTable('ifuturz_subscription')} (
   `subscription_id` int(11) unsigned NOT NULL auto_increment,
 	`name` varchar(50) NULL,
 	`email` varchar(50) NULL,		
-	`created_at` timestamp default NULL,
-	`updated_at` timestamp default NULL,	
+	`created_at` timestamp NOT NULL,
+	`updated_at` timestamp NOT NULL,	
   PRIMARY KEY (`subscription_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
