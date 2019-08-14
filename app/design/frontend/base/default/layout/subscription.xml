@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<layout version="0.1.0">
+	<default>
+        <reference name="footer_links">
+            <action method="addLink" translate="label title" module="subscription"><label>New Arrival Subscription</label><url helper="subscription/data/getSubscribeUrl" /><title>Click here to get product updates</title></action>
+		</reference>
+    </default>	
+	<subscription_index_index>	
+		<reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>	
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/subscription/jquery-1.7.1.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/subscription/jquery_noconflict.js</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/subscription/subscription.css</name></action>						
+		</reference>
+	   	<reference name="content">
+			<block type="subscription/subscription" as="subscriptionAs" template="subscription/form.phtml"/>
+		</reference>
+    </subscription_index_index>
+</layout>

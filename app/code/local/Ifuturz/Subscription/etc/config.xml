@@ -1,0 +1,168 @@
+<?xml version="1.0" ?>
+<config>
+	<modules>
+		<Ifuturz_Subscription>
+			<version>0.1.0</version>
+		</Ifuturz_Subscription>
+	</modules>
+	
+	<frontend>
+        <routers>
+            <subscription>
+                <use>standard</use>
+                <args>
+                    <module>Ifuturz_Subscription</module>
+                    <frontName>subscription</frontName>
+                </args>
+            </subscription>			
+        </routers>
+        <layout>
+            <updates>
+                <subscription>
+                    <file>subscription.xml</file>
+                </subscription>
+            </updates>
+        </layout>
+    </frontend>
+	
+	<admin>
+        <routers>
+			<subscription>
+				<use>admin</use>
+				<args>
+					<module>Ifuturz_Subscription</module>
+					<frontName>subscription</frontName>
+				</args>
+			</subscription>
+        </routers>
+		 
+    </admin>
+	<adminhtml>	
+		<menu>
+			<subscription module="subscription">
+				<title>Subscriptions</title>
+				<sort_order>11</sort_order>
+				<children>
+					<items module="subscription">
+					<title>Manage Subscription</title>
+					<action>subscription/adminhtml_subscription</action>
+					</items>
+				</children>
+			</subscription>
+		</menu>		
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <subscription_options>
+                                            <title>Subscription Options</title>
+                                        </subscription_options>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+						<items module="subscription">
+							<children>
+							<title>Subscription</title>
+							</children>
+						</items>						
+					</children>
+				</admin>
+			</resources>
+		</acl>	
+		<layout>
+			<updates>
+				<subscription>
+					<file>subscription.xml</file>
+				</subscription>
+			</updates>
+		</layout>
+		<events>
+			<catalog_product_save_before>
+				<observers>
+					<ifuturz_send_product_create_email>
+						<type>singleton</type>
+						<class>subscription/observer</class>
+						<method>sendSubscriptionEmail</method>
+					</ifuturz_send_product_create_email> 
+				</observers>
+			</catalog_product_save_before>
+		</events>
+	</adminhtml>
+	
+	<global>
+		<models>
+			<subscription>
+				<class>Ifuturz_Subscription_Model</class>
+				<resourceModel>subscription_mysql4</resourceModel>
+			</subscription>
+			<subscription_mysql4>
+				<class>Ifuturz_Subscription_Model_Mysql4</class>
+				<entities>
+					<subscription>
+						 <table>ifuturz_subscription</table>
+					</subscription>
+				</entities>
+			</subscription_mysql4>
+		</models>		
+		 <resources>
+            <subscription_setup>
+                <setup>
+                    <module>Ifuturz_Subscription</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </subscription_setup>
+            <subscription_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </subscription_write>
+            <subscription_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </subscription_read>
+        </resources>		
+		<blocks>
+			<subscription>
+				<class>Ifuturz_Subscription_Block</class>
+			</subscription>
+		</blocks>		
+		<helpers>
+			<subscription>
+                <class>Ifuturz_Subscription_Helper</class>
+            </subscription>
+		</helpers>
+		<template>
+			<email>
+				<subscription_template  module="subscription">
+					<label>Subscription</label>
+					<file>ifuturz_subscription.html</file>
+					<type>html</type>
+				</subscription_template>
+				<subscription_product_template  module="subscription">
+					<label>Subscription Product</label>
+					<file>ifuturz_product_subscription.html</file>
+					<type>html</type>
+				</subscription_product_template>				
+			</email>
+        </template>
+		<events>
+			<controller_action_predispatch>
+				<observers>
+					<subscription_install>
+						<class>Ifuturz_Subscription_Model_Observer</class>
+						<method>checkInstallation</method>
+					</subscription_install>					
+				</observers>
+			</controller_action_predispatch>
+		</events>
+	</global>
+	
+</config>

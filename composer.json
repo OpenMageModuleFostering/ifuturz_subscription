@@ -1,0 +1,17 @@
+{
+    "name": "OpenMageModuleFostering/Ifuturz_Subscription",
+    "type": "magento-module",
+    "license": "OSL-v3.0",
+    "homepage": "",
+    "description": "Get your customers drool with your store’s
+latest updates and that too on likeable products.",
+    "authors": [
+    {
+        "name": "Iverve",
+        "email": "extension.geek@ifuturz.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package>
+    <name>Ifuturz_Subscription</name>
+    <version>0.1.0</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Get your customers drool with your store&#x2019;s&#xD;
+latest updates and that too on likeable products.</summary>
+    <description>For any store, sending the updates to the users is very necessary. Why not send the new arrival product updates to the user for his likeable products?&#xD;
+&#xD;
+This extension provides the facility to the users to subscribe your online store and get the updates via mail.&#xD;
+&#xD;
+Once the extension is installed, you will be able to view &#x201C;New Arrival Subscription&#x201D; link on footer. &#xD;
+&#xD;
+On click of the link, the user will be redirected to the form where the user can select various categories for which he/she would like to get the updates.&#xD;
+&#xD;
+The user can subscribe to all or specific categories of your store as required. &#xD;
+&#xD;
+Click on Subscribe button&#xD;
+&#xD;
+Once the user gets subscribed, he will get a notification via email that you are successfully subscribed. &#xD;
+&#xD;
+Whenever the new product will be created, the user will get the notification with respect to the categories selected. </description>
+    <notes>This is first stable version</notes>
+    <authors><author><name>Iverve</name><user>iverve</user><email>extension.geek@ifuturz.com</email></author></authors>
+    <date>2015-01-28</date>
+    <time>09:11:09</time>
+    <contents><target name="mageetc"><dir name="modules"><file name="Ifuturz_Subscription.xml" hash="6f4ca276a91fc3e14418c781e6188abe"/></dir></target><target name="magelocal"><dir name="Ifuturz"><dir name="Subscription"><dir name="Block"><dir name="Adminhtml"><dir name="Subscription"><file name="Grid.php" hash="939674afd7449553bc42b5b03241883a"/></dir><file name="Subscription.php" hash="83fc72726ff9c3dca321e97b29847937"/></dir><file name="Subscription.php" hash="ee8c2d7c075af3141b303a461a80d728"/></dir><dir name="Helper"><file name="Data.php" hash="e02bdb0b05b0e620b88dcc3ed0b1ef42"/></dir><dir name="Model"><dir name="Mysql4"><dir name="Subscription"><file name="Collection.php" hash="ee60dc6a9a8fa2f4667a5baba5f5d815"/></dir><file name="Subscription.php" hash="48c5dd3bc799c176aa03d151de994ce6"/></dir><file name="Observer.php" hash="d74ee44116087bfdf6763c28c8ad0f24"/><file name="Subscription.php" hash="7eceb31eba111200e91ac8f64600d488"/></dir><dir name="controllers"><dir name="Adminhtml"><file name="SubscriptionController.php" hash="cf7bac2a86cf4d0b68bec2dcf240e7f4"/></dir><file name="IndexController.php" hash="e10bf25221cc414957c828a213960320"/></dir><dir name="etc"><file name="config.xml" hash="d7e47827ac7720473480befa52564dd0"/></dir><dir name="sql"><dir name="subscription_setup"><file name="mysql4-install-0.1.0.php" hash="cc1c3cf8115532d852e350478c445206"/></dir></dir></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="subscription.xml" hash="2541bdf982d274aeea25b90b42d87d18"/></dir><dir name="template"><dir name="subscription"><file name="form.phtml" hash="209c41f2185f1f7219a0ccf301489579"/></dir></dir></dir></dir></dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="subscription.xml" hash="ed763233fbcd48c651c9c87f9e83621f"/></dir><dir name="template"><dir name="subscription"><file name="form.phtml" hash="08b2b80d119b59066dd31221c5d46a88"/></dir></dir></dir></dir></dir></target><target name="magelocale"><dir name="en_US"><dir name="template"><dir name="email"><file name="ifuturz_product_subscription.html" hash="3dd10db5a666c617f9b12bb156ca14c3"/><file name="ifuturz_subscription.html" hash="5654acbf4f2e0b4ba5dd6dba02b16566"/></dir></dir></dir></target><target name="mageskin"><dir name="frontend"><dir name="base"><dir name="default"><dir name="css"><dir name="subscription"><file name="subscription.css" hash="20fb39ff5d0b421ddeb9636b31f583d5"/></dir></dir><dir name="images"><dir name="subscription"><file name="plus_minus.gif" hash="cb543f9234b1eeb6cb0907ff513422c8"/></dir></dir><dir name="js"><dir name="subscription"><file name="jquery-1.7.1.min.js" hash="4bab8348a52d17428f684ad1ec3a427e"/><file name="jquery_noconflict.js" hash="afdd9b4ecb226d898fe655136f849752"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

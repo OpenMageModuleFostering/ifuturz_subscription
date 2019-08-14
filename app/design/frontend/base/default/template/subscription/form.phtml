@@ -1,0 +1,123 @@
+<?php
+/**
+ * @package Ifuturz_Subscription
+ */
+?>
+<script type="text/javascript">	
+function check_checkboxes()
+{
+  var catInput = jQuery("#treeNav input");
+  for (var i = 0; i < catInput.length; i++)
+  {
+    if (catInput[i].type == 'checkbox')
+    {
+       if (catInput[i].checked) {return true}
+    }
+  }
+  return false;
+}
+
+jQuery(document).ready(function(){
+	jQuery("#treeNav").treeNav({});	
+	jQuery( "#subscribe_submit" ).click(function() {			
+		if(!check_checkboxes())
+		{				
+			jQuery(".catvalidation").show();				
+		}
+		else
+		{
+			jQuery(".catvalidation").hide();
+			return true;	
+		}
+		
+	});			
+});
+jQuery.fn.treeNav = function(options) {
+ var root = $(this);	
+	root.find("span").each(function(){			
+		jQuery(this).parent().addClass("collapsed");
+		jQuery(this).bind("click",function(){				
+			if (jQuery(this).parent().hasClass("collapsed"))
+			{
+				jQuery(this).parent().find("ul:first").slideDown("fast",function(){
+					jQuery(this).parent().removeClass("collapsed");
+					jQuery(this).parent().addClass("expanded");
+				});   					   					
+			}
+			else
+			{				
+				jQuery(this).parent().find("ul:first").slideUp("fast",function(){				
+					
+					jQuery(this).parent().removeClass("expanded");
+					jQuery(this).parent().addClass("collapsed");
+				});
+			}
+		});
+	});
+ 
+}   	
+</script>
+<div class="page-title">
+    <h1><?php echo $this->__('Subscription')?></h1>
+</div>
+<form method="post" id="subscriptionForm" action="<?php echo Mage::getUrl('subscription/index/post')?>">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Subscription Detail')?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label class="required" for="name"><em>*</em><?php echo $this->__('Name')?></label>
+                    <div class="input-box">
+                        <input type="text" class="input-text required-entry" value="" title="Name" id="name" name="name">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="required" for="email"><em>*</em><?php echo $this->__('Email')?></label>
+                    <div class="input-box">
+                        <input type="text" class="input-text required-entry validate-email" value="" title="Email" id="email" name="email">
+                    </div>
+                </div>
+            </li>
+            <li>
+                <label for="category"><?php echo $this->__('Select Category:')?></label>                
+                <br />
+                <div id="treeNav">
+				<?php
+                    $cat_mod = Mage::getModel('catalog/category');
+                    $helper = Mage::helper('catalog/category');
+                    $_main_categories=$helper->getStoreCategories();
+                    if ($_main_categories):?> 
+                        <ul><?php
+                        foreach ($_main_categories as $_main_category):
+                            if($_main_category->getIsActive()):
+                                $cid = $_main_category->getId();
+                                $cur_category = $cat_mod->load($cid);
+                                $category_name = $cur_category->getName();?>
+                                <li id='<?=$_main_category->getId()?>'><span><?php echo $category_name?></span><span class="expand-child">&nbsp;</span>
+                                <?php
+                                $this->res($cid, $_main_category->getId());
+                                ?>
+                            </li>
+                            <?php endif; ?>
+                       <?php endforeach; ?>
+                        </ul>
+                <?php endif; ?>
+                <div id="advice-validate-one-required-category" class="validation-advice catvalidation" style="display:none;"><?php echo $this->__('Please select one of the above options.')?></div>
+            </div>
+            </li>   
+            <li>
+            	
+            </li>         
+        </ul>
+        
+    </div>
+    <div class="buttons-set">
+        <p class="required"><?php echo $this->__('* Required Fields')?></p>       
+        <button class="button" title="Submit" id="subscribe_submit" type="submit"><span><span><?php echo $this->__('Subscribe')?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+var subscriptionForm = new VarienForm('subscriptionForm', true);
+//]]> 
+</script>
